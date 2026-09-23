@@ -1,0 +1,327 @@
+{
+  "version": 2,
+  "objective": {
+    "metric": "validation_iou",
+    "direction": "maximize"
+  },
+  "fixed_policy": {
+    "model_family": "selected_before_study",
+    "source": "selected_before_study",
+    "train_validation_split": "from_experiment_config",
+    "seed": "from_experiment_config",
+    "external_test_access": false,
+    "threshold_search_on_test": false,
+    "postprocessing_search_on_test": false
+  },
+  "study": {
+    "sampler": "tpe",
+    "n_startup_trials": 10,
+    "keep_trial_checkpoints": false,
+    "winner_policy": "exact_best_trial_checkpoint_no_retraining"
+  },
+  "models": {
+    "unet": {
+      "dataset_type": "ct",
+      "parameters": {
+        "backbone": {
+          "type": "categorical",
+          "values": [
+            "vanilla_unet"
+          ]
+        },
+        "tile_size": {
+          "type": "categorical",
+          "values": [
+            256,
+            320,
+            384,
+            512
+          ]
+        },
+        "batch_size": {
+          "type": "categorical",
+          "values": [
+            2,
+            4,
+            8,
+            12
+          ]
+        },
+        "optimizer": {
+          "type": "categorical",
+          "values": [
+            "adam",
+            "adamw",
+            "sgd"
+          ]
+        },
+        "learning_rate": {
+          "type": "float",
+          "low": 1e-05,
+          "high": 0.0005,
+          "log": true
+        },
+        "weight_decay": {
+          "type": "float",
+          "low": 1e-06,
+          "high": 0.001,
+          "log": true
+        },
+        "momentum": {
+          "type": "float",
+          "low": 0.8,
+          "high": 0.95,
+          "condition": {
+            "parameter": "optimizer",
+            "equals": "sgd"
+          }
+        },
+        "loss_type": {
+          "type": "categorical",
+          "values": [
+            "bce_dice",
+            "bce"
+          ]
+        },
+        "bce_weight": {
+          "type": "float",
+          "low": 0.3,
+          "high": 0.7,
+          "condition": {
+            "parameter": "loss_type",
+            "equals": "bce_dice"
+          }
+        },
+        "augmentation": {
+          "type": "categorical",
+          "values": [
+            false,
+            true
+          ]
+        }
+      }
+    },
+    "deeplabv3": {
+      "dataset_type": "ct",
+      "parameters": {
+        "backbone": {
+          "type": "categorical",
+          "values": [
+            "resnet50",
+            "resnet101"
+          ]
+        },
+        "tile_size": {
+          "type": "categorical",
+          "values": [
+            256,
+            320,
+            384,
+            512
+          ]
+        },
+        "batch_size": {
+          "type": "categorical",
+          "values": [
+            2,
+            4,
+            8
+          ]
+        },
+        "optimizer": {
+          "type": "categorical",
+          "values": [
+            "adam",
+            "adamw",
+            "sgd"
+          ]
+        },
+        "learning_rate": {
+          "type": "float",
+          "low": 1e-05,
+          "high": 0.0005,
+          "log": true
+        },
+        "weight_decay": {
+          "type": "float",
+          "low": 1e-06,
+          "high": 0.001,
+          "log": true
+        },
+        "momentum": {
+          "type": "float",
+          "low": 0.8,
+          "high": 0.95,
+          "condition": {
+            "parameter": "optimizer",
+            "equals": "sgd"
+          }
+        },
+        "loss_type": {
+          "type": "categorical",
+          "values": [
+            "bce_dice",
+            "bce"
+          ]
+        },
+        "bce_weight": {
+          "type": "float",
+          "low": 0.3,
+          "high": 0.7,
+          "condition": {
+            "parameter": "loss_type",
+            "equals": "bce_dice"
+          }
+        },
+        "augmentation": {
+          "type": "categorical",
+          "values": [
+            false,
+            true
+          ]
+        }
+      }
+    },
+    "maskrcnn": {
+      "dataset_type": "rcnn",
+      "parameters": {
+        "backbone": {
+          "type": "categorical",
+          "values": [
+            "resnet50_fpn"
+          ]
+        },
+        "tile_size": {
+          "type": "categorical",
+          "values": [
+            256,
+            320,
+            384,
+            512
+          ]
+        },
+        "batch_size": {
+          "type": "categorical",
+          "values": [
+            1,
+            2,
+            4
+          ]
+        },
+        "optimizer": {
+          "type": "categorical",
+          "values": [
+            "adamw",
+            "sgd"
+          ]
+        },
+        "learning_rate": {
+          "type": "float",
+          "low": 1e-05,
+          "high": 0.0003,
+          "log": true
+        },
+        "weight_decay": {
+          "type": "float",
+          "low": 1e-06,
+          "high": 0.001,
+          "log": true
+        },
+        "momentum": {
+          "type": "float",
+          "low": 0.8,
+          "high": 0.95,
+          "condition": {
+            "parameter": "optimizer",
+            "equals": "sgd"
+          }
+        },
+        "scheduler": {
+          "type": "categorical",
+          "values": [
+            "none",
+            "step",
+            "cosine"
+          ]
+        },
+        "augmentation": {
+          "type": "categorical",
+          "values": [
+            false,
+            true
+          ]
+        },
+        "pretrained": {
+          "type": "categorical",
+          "values": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    "sam_lora": {
+      "dataset_type": "ct",
+      "parameters": {
+        "backbone": {
+          "type": "categorical",
+          "values": [
+            "vit_b"
+          ]
+        },
+        "tile_size": {
+          "type": "categorical",
+          "values": [
+            256
+          ]
+        },
+        "batch_size": {
+          "type": "categorical",
+          "values": [
+            1
+          ]
+        },
+        "learning_rate": {
+          "type": "float",
+          "low": 1e-05,
+          "high": 0.0003,
+          "log": true
+        },
+        "weight_decay": {
+          "type": "float",
+          "low": 1e-06,
+          "high": 0.001,
+          "log": true
+        },
+        "bce_weight": {
+          "type": "float",
+          "low": 0.3,
+          "high": 0.7
+        },
+        "lora_rank": {
+          "type": "categorical",
+          "values": [
+            4,
+            8,
+            16
+          ]
+        },
+        "lora_alpha": {
+          "type": "categorical",
+          "values": [
+            8,
+            16,
+            32
+          ]
+        },
+        "augmentation": {
+          "type": "categorical",
+          "values": [
+            false,
+            true
+          ]
+        }
+      }
+    }
+  }
+}

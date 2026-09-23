@@ -1,0 +1,18 @@
+{
+  "_note": "Final IoU should use the external test zone matching the experiment source. Add or edit IDs here once per source. The UI also lets you enter missing IDs manually before Final Evaluation.",
+  "satellite": {
+    "display_name": "Satellite Final Test Zone",
+    "test_image_id": "satellite_area_04",
+    "ground_truth_id": "satellite_labeling"
+  },
+  "aerial": {
+    "display_name": "Aerial Final Test Zone",
+    "test_image_id": "",
+    "ground_truth_id": ""
+  },
+  "drone": {
+    "display_name": "Drone Final Test Zone",
+    "test_image_id": "",
+    "ground_truth_id": ""
+  }
+}

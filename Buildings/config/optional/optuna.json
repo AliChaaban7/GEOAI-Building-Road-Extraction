@@ -1,0 +1,37 @@
+{
+  "study_name": "deeplabv3_256_satellite_optuna",
+  "direction": "maximize",
+
+  "n_trials": 10,
+  "trial_epochs": 12,
+
+  "train_final_model_after_search": true,
+  "final_epochs": 40,
+
+  "sampler_seed": 42,
+
+  "parameters": {
+    "learning_rate": {
+      "low": 0.00001,
+      "high": 0.001,
+      "log": true
+    },
+    "weight_decay": {
+      "low": 0.000001,
+      "high": 0.001,
+      "log": true
+    },
+    "bce_weight": {
+      "low": 0.3,
+      "high": 0.7
+    },
+    "dice_weight": {
+      "low": 0.3,
+      "high": 0.7
+    }
+  },
+
+  "outputs": {
+    "optuna_folder": "outputs/optuna"
+  }
+}

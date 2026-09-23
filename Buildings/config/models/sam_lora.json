@@ -1,0 +1,113 @@
+{
+  "model_type": "sam_lora",
+  "display_name": "SAM-LoRA",
+  "task": "binary_semantic_segmentation",
+  "dataset_type": "ct",
+  "default_backbone": "vit_b",
+  "supported_backbones": {
+    "vit_b": {
+      "display_name": "ViT-B",
+      "checkpoint": "Buildings/checkpoints/sam/sam_vit_b_01ec64.pth",
+      "enabled": true
+    },
+    "vit_l": {
+      "display_name": "ViT-L",
+      "checkpoint": "Buildings/checkpoints/sam/sam_vit_l_0b3195.pth",
+      "enabled": true
+    },
+    "vit_h": {
+      "display_name": "ViT-H",
+      "checkpoint": "Buildings/checkpoints/sam/sam_vit_h_4b8939.pth",
+      "enabled": true
+    }
+  },
+  "input": {
+    "channels": 3,
+    "sam_input_size": 1024,
+    "use_sam_pretrained_normalization": true,
+    "preserve_dataset_tile_size_for_output": true
+  },
+  "lora": {
+    "rank": 8,
+    "alpha": 16.0,
+    "dropout": 0.0,
+    "target_projections": [
+      "q",
+      "v"
+    ],
+    "apply_to_transformer_blocks": "all"
+  },
+  "freeze": {
+    "sam_base_image_encoder": true,
+    "prompt_encoder": true,
+    "mask_decoder": false
+  },
+  "prompt_strategy": {
+    "mode": "automatic_no_manual_prompt",
+    "multimask_output": false
+  },
+  "training": {
+    "epochs": 40,
+    "default_batch_size": 1,
+    "recommended_batch_size_by_backbone": {
+      "vit_b": 1,
+      "vit_l": 1,
+      "vit_h": 1
+    },
+    "optimizer": "adamw",
+    "weight_decay": 1e-05,
+    "scheduler": "none",
+    "mixed_precision": true,
+    "learning_rate": {
+      "mode": "fixed",
+      "value": 0.0001,
+      "finder": {
+        "min_lr": 1e-07,
+        "max_lr": 0.003,
+        "num_steps": 80,
+        "smoothing_beta": 0.98,
+        "divergence_threshold": 4.0,
+        "selection_method": "steepest_descent"
+      }
+    },
+    "loss": {
+      "type": "bce_dice",
+      "bce_weight": 0.5,
+      "dice_weight": 0.5,
+      "dice_smooth": 1.0
+    },
+    "best_checkpoint": {
+      "metric": "validation_iou",
+      "direction": "maximize"
+    }
+  },
+  "augmentation": {
+    "use_shared_buildings_augmentation": true
+  },
+  "validation": {
+    "default_threshold": 0.5,
+    "calculate_pixel_iou": true
+  },
+  "checkpoint": {
+    "save_mode": "lora_and_decoder",
+    "save_optimizer_state": true,
+    "save_auto_lr": true,
+    "save_parameter_counts": true
+  },
+  "inference": {
+    "default_threshold": 0.5,
+    "use_tiled_inference": true,
+    "tile_overlap": 64,
+    "merge_method": "average_probability"
+  },
+  "reporting": {
+    "record_total_parameters": true,
+    "record_trainable_parameters": true,
+    "record_trainable_percentage": true,
+    "record_training_time": true,
+    "record_resolved_auto_lr": true,
+    "record_resolved_learning_rate": true,
+    "record_lora_rank": true,
+    "record_lora_alpha": true
+  }
+}

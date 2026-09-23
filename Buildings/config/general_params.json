@@ -1,0 +1,68 @@
+{
+  "training": {
+    "epochs": 40,
+    "optimizer": "adamw",
+    "learning_rate": 0.0001,
+    "weight_decay": 0.00001,
+    "scheduler": "reduce_on_plateau",
+    "mixed_precision": true,
+    "num_workers": 0,
+    "pin_memory": true,
+    "random_seed": 42,
+    "drop_last_train_batch": true
+  },
+
+  "data": {
+    "validation_ratio": 0.2,
+    "background_ratio": 0.5
+  },
+
+  "data_split": {
+    "train_percent": 80,
+    "validation_percent": 20,
+    "seed": 42
+  },
+
+  "inference": {
+    "overlap_ratio": 0.25,
+    "save_probability_map": false,
+    "save_binary_mask": false,
+    "save_raw_polygons": false,
+    "save_final_prediction": true
+  },
+
+  "thresholds": {
+    "semantic_thresholds": [
+      0.05, 0.10, 0.15, 0.20, 0.25,
+      0.30, 0.35, 0.40, 0.45, 0.50,
+      0.60, 0.70, 0.80, 0.90
+    ],
+    "maskrcnn_score_thresholds": [
+      0.10, 0.20, 0.30, 0.40, 0.50,
+      0.60, 0.70, 0.80, 0.90
+    ]
+  },
+
+  "evaluation": {
+    "main_metric": "strict_polygon_iou",
+    "calculate_precision": true,
+    "calculate_recall": true,
+    "calculate_f1": true,
+    "calculate_area_statistics": true,
+    "save_iou_as_percent": true
+  },
+
+  "postprocessing": {
+    "area_thresholds_m2": [
+      0, 5, 10, 15, 20, 25, 30, 35, 40, 50, 75, 100
+    ],
+    "hole_area_m2": 5,
+    "choose_best_between_raw_and_postprocessed": true
+  },
+
+  "outputs": {
+    "experiments_folder": "outputs/experiments",
+    "optuna_folder": "outputs/optuna",
+    "master_results_file": "outputs/master_results.csv"
+  }
+}

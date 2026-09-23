@@ -1,0 +1,48 @@
+{
+  "module": "Building Extraction",
+  "ui_version": "final_simple_manual_v2",
+  "workflow": {
+    "automatic_mode": false,
+    "smoke_test": false,
+    "visible_freeze_step": false,
+    "tabs": [
+      "Experiment",
+      "Results",
+      "Final Evaluation"
+    ]
+  },
+  "models": [
+    "unet",
+    "deeplabv3",
+    "maskrcnn"
+  ],
+  "manual_controls": {
+    "model": true,
+    "source": true,
+    "tile_size": "dynamic_from_datasets_json",
+    "backbone": "dynamic_from_model_json",
+    "augmentation": "optional",
+    "optuna": "optional",
+    "threshold_optimization": "optional",
+    "postprocessing": "optional"
+  },
+  "final_evaluation": {
+    "same_source_test_zone": true,
+    "technical_freeze": "automatic_internal_before_final_test",
+    "primary_metrics": [
+      "IoU",
+      "Precision",
+      "Recall",
+      "F1"
+    ]
+  },
+  "defaults": {
+    "train_percent": 80,
+    "validation_percent": 20,
+    "split_seed": 42,
+    "epochs": 40,
+    "optuna_trials": 10,
+    "optuna_trial_epochs": 12,
+    "optuna_final_epochs": 40
+  }
+}

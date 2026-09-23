@@ -1,0 +1,44 @@
+{
+  "model_type": "maskrcnn",
+  "task_type": "instance_segmentation",
+  "description": "Mask R-CNN ResNet50-FPN for instance-based building extraction",
+  "num_classes": 2,
+  "input_channels": 3,
+  "default_backbone": "resnet50_fpn",
+  "backbone": "resnet50_fpn",
+  "pretrained": false,
+  "supported_backbones": {
+    "resnet50_fpn": {
+      "name": "resnet50_fpn",
+      "display_name": "Mask R-CNN ResNet50-FPN",
+      "automatic_batch_size": 1,
+      "pretrained": false,
+      "description": "Standard Mask R-CNN with ResNet50-FPN backbone"
+    }
+  },
+  "backbones": {
+    "resnet50_fpn": {
+      "name": "resnet50_fpn",
+      "display_name": "Mask R-CNN ResNet50-FPN",
+      "automatic_batch_size": 1,
+      "pretrained": false,
+      "description": "Standard Mask R-CNN with ResNet50-FPN backbone"
+    }
+  },
+  "training": {
+    "batch_size": 1,
+    "score_threshold": 0.5,
+    "mask_threshold": 0.5,
+    "nms_threshold": 0.5,
+    "detections_per_image": 300,
+    "learning_rate": 0.0001,
+    "weight_decay": 1e-05,
+    "epochs": 40
+  },
+  "output": {
+    "score_threshold": 0.5,
+    "mask_threshold": 0.5,
+    "nms_threshold": 0.5,
+    "detections_per_image": 300
+  }
+}

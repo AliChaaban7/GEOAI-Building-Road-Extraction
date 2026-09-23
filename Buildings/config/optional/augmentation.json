@@ -1,0 +1,50 @@
+{
+  "enabled": true,
+  "version": "1.0",
+  "description": "Shared safe augmentation configuration for U-Net, DeepLabV3 and Mask R-CNN building extraction training.",
+  "apply_to": "training_only",
+
+  "geometric": {
+    "horizontal_flip": {
+      "enabled": true,
+      "probability": 0.5
+    },
+
+    "vertical_flip": {
+      "enabled": true,
+      "probability": 0.5
+    },
+
+    "rotation_90": {
+      "enabled": true,
+      "probability": 0.5,
+      "angles": [
+        90,
+        180,
+        270
+      ]
+    }
+  },
+
+  "photometric": {
+    "brightness": {
+      "enabled": true,
+      "probability": 0.3,
+      "min_factor": 0.9,
+      "max_factor": 1.1
+    },
+
+    "contrast": {
+      "enabled": true,
+      "probability": 0.3,
+      "min_factor": 0.9,
+      "max_factor": 1.1
+    },
+
+    "gaussian_noise": {
+      "enabled": false,
+      "probability": 0.15,
+      "std": 0.01
+    }
+  }
+}

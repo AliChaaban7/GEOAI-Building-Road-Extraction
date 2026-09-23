@@ -1,0 +1,18 @@
+{
+  "project_root": "D:/Ali Chaaban Thesis Project/GeoAI_Thesis_Codebase/Buildings",
+
+  "arcgis_project_folder": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis",
+  "arcgis_project_gdb": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb",
+
+  "test_images": {
+    "satellite_area_04": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/Area_04_Clip",
+    "aerial_test_zone": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/Cliped_img",
+    "drone_v00601": "D:/Ali Chaaban Thesis Project/Data/Drone Images/Drone_10cm.gdb/V00601_TOR_20250107_Resample"
+  },
+
+  "ground_truth": {
+    "satellite_labeling": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/Satellite_labeling",
+    "aerial_label_testing": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/Arial_label_testing",
+    "gt_drone": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/GT_Drone_ProjectTo_V00601_UTM36N"
+  }
+}

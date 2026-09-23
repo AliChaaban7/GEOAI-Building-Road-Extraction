@@ -1,0 +1,23 @@
+{
+  "experiment_id": "smoke_maskrcnn_512_satellite",
+  "approach": "buildings",
+
+  "model_type": "maskrcnn",
+  "backbone": "resnet50_fpn",
+
+  "source_type": "satellite",
+  "tile_size": 512,
+  "dataset_type": "rcnn",
+
+  "test_image_id": "satellite_area_04",
+  "ground_truth_id": "satellite_labeling",
+
+  "use_optuna": false,
+  "use_postprocessing": false,
+  "use_augmentation": false,
+  "use_normalization": false,
+  "use_resampling": false,
+  "use_threshold_search": false,
+  "use_error_analysis": false,
+  "use_reporting": true
+}

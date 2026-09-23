@@ -1,0 +1,95 @@
+{
+  "datasets": {
+    "satellite_ct_256": {
+      "source_type": "satellite",
+      "tile_size": 256,
+      "dataset_type": "ct",
+      "data_mode": "semantic_binary",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Sat Images/CT_256_Buildings_03_Satellite_Only"
+    },
+    "satellite_ct_512": {
+      "source_type": "satellite",
+      "tile_size": 512,
+      "dataset_type": "ct",
+      "data_mode": "semantic_binary",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Sat Images/CT_512_Buildings_03_Satellite_Only"
+    },
+    "aerial_ct_256": {
+      "source_type": "aerial",
+      "tile_size": 256,
+      "dataset_type": "ct",
+      "data_mode": "semantic_binary",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Arial Images/CT_256_Buildings_03_Arial_Only"
+    },
+    "aerial_ct_512": {
+      "source_type": "aerial",
+      "tile_size": 512,
+      "dataset_type": "ct",
+      "data_mode": "semantic_binary",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Arial Images/CT_512_Buildings_03_Arial_Only"
+    },
+    "drone_ct_256": {
+      "source_type": "drone",
+      "tile_size": 256,
+      "dataset_type": "ct",
+      "data_mode": "semantic_binary",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Drone Images/CT_256_Buildings_03_Drone_Only"
+    },
+    "drone_ct_512": {
+      "source_type": "drone",
+      "tile_size": 512,
+      "dataset_type": "ct",
+      "data_mode": "semantic_binary",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Drone Images/CT_512_Buildings_03_Drone_Only"
+    },
+    "satellite_rcnn_256": {
+      "source_type": "satellite",
+      "tile_size": 256,
+      "dataset_type": "rcnn",
+      "data_mode": "instance_masks",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Sat Images/RCNN_256_Buildings_03_Satellite_Only"
+    },
+    "satellite_rcnn_512": {
+      "source_type": "satellite",
+      "tile_size": 512,
+      "dataset_type": "rcnn",
+      "data_mode": "instance_segmentation",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Sat Images/RCNN_512_Buildings_03_Satellite_Only"
+    },
+    "aerial_rcnn_256": {
+      "source_type": "aerial",
+      "tile_size": 256,
+      "dataset_type": "rcnn",
+      "data_mode": "instance_masks",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Arial Images/RCNN_256_Buildings_03_Arial_Only"
+    },
+    "aerial_rcnn_512": {
+      "source_type": "aerial",
+      "tile_size": 512,
+      "dataset_type": "rcnn",
+      "data_mode": "instance_masks",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Arial Images/RCNN_512_Buildings_03_Arial_Only"
+    },
+    "drone_rcnn_256": {
+      "source_type": "drone",
+      "tile_size": 256,
+      "dataset_type": "rcnn",
+      "data_mode": "instance_masks",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Drone Images/RCNN_256_Buildings_03_Drone_Only"
+    },
+    "drone_rcnn_512": {
+      "source_type": "drone",
+      "tile_size": 512,
+      "dataset_type": "rcnn",
+      "data_mode": "instance_masks",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Drone Images/RCNN_512_Buildings_03_Drone_Only"
+    }
+  },
+  "satellite_rcnn_512": {
+    "source_type": "satellite",
+    "tile_size": 512,
+    "dataset_type": "rcnn",
+    "data_mode": "instance_segmentation",
+    "path": "D:/Ali Chaaban Thesis Project/Data/Sat Images/RCNN_512_Buildings_03_Satellite_Only"
+  }
+}
