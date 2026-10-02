@@ -1,0 +1,57 @@
+{
+  "experiment_id": "unet_256_mixed_roads_baseline",
+
+  "approach": "roads",
+  "task": "binary_semantic_segmentation",
+
+  "model_type": "unet",
+  "backbone": "vanilla_unet",
+
+  "source_type": "mixed",
+  "sources": [
+    "aerial",
+    "satellite",
+    "drone"
+  ],
+
+  "tile_size": 256,
+  "dataset_type": "ct",
+  "dataset_id": "roads_ct_256_mixed",
+
+  "foreground_class": "road",
+  "background_class": "background",
+
+  "use_augmentation": false,
+  "use_optuna": false,
+  "use_master_optuna": false,
+  "use_cross_validation": false,
+
+  "use_threshold_search": true,
+  "use_postprocessing": true,
+
+  "use_normalization": false,
+  "use_resampling": false,
+
+  "use_error_analysis": false,
+  "use_reporting": true,
+
+  "data_split": {
+    "train_percent": 80,
+    "validation_percent": 20,
+    "seed": 42
+  },
+
+  "final_test_sources": [
+    "aerial",
+    "satellite",
+    "drone"
+  ],
+
+  "final_test_policy": {
+    "use_frozen_checkpoint": true,
+    "use_frozen_threshold": true,
+    "use_frozen_postprocessing": true,
+    "threshold_search_on_test": false,
+    "postprocessing_search_on_test": false
+  }
+}

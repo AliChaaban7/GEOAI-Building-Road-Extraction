@@ -1,0 +1,169 @@
+{
+  "version": 2,
+  "policy": {
+    "ui": "show_all_supported_backbones",
+    "manual_training": "selected_backbone_only",
+    "general_optuna": "selected_backbone_only",
+    "master_optuna": "all_ready_backbones_for_selected_model",
+    "external_test_used_for_selection": false
+  },
+  "models": {
+    "unet": {
+      "label": "U-Net",
+      "default_backbone": "vanilla_unet",
+      "backbones": [
+        {
+          "id": "vanilla_unet",
+          "label": "Vanilla U-Net",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet18",
+          "label": "ResNet18 Encoder",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet34",
+          "label": "ResNet34 Encoder",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet50",
+          "label": "ResNet50 Encoder",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet101",
+          "label": "ResNet101 Encoder",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet152",
+          "label": "ResNet152 Encoder",
+          "ready": true,
+          "master_optuna": true
+        }
+      ]
+    },
+
+    "deeplabv3": {
+      "label": "DeepLabV3+",
+      "default_backbone": "resnet50",
+      "backbones": [
+        {
+          "id": "resnet50",
+          "label": "ResNet50",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet101",
+          "label": "ResNet101",
+          "ready": true,
+          "master_optuna": true
+        },
+        {
+          "id": "resnet152",
+          "label": "ResNet152",
+          "ready": true,
+          "master_optuna": true
+        }
+      ]
+    },
+
+    "connectnet": {
+      "label": "ConnectNet",
+      "default_backbone": "resnet50",
+      "backbones": [
+        {
+          "id": "resnet50",
+          "label": "ResNet-50",
+          "ready": true,
+          "master_optuna": false,
+          "arcgis_backbone": "resnet50",
+          "mtl_model": "linknet"
+        },
+        {
+          "id": "resnet101",
+          "label": "ResNet-101",
+          "ready": true,
+          "master_optuna": false,
+          "arcgis_backbone": "resnet101",
+          "mtl_model": "linknet"
+        },
+        {
+          "id": "resnet152",
+          "label": "ResNet-152",
+          "ready": true,
+          "master_optuna": false,
+          "arcgis_backbone": "resnet152",
+          "mtl_model": "linknet"
+        }
+      ]
+    },
+
+    "multitask_road_extractor": {
+      "label": "MultiTask Road Extractor",
+      "default_backbone": "resnet50",
+      "backbones": [
+        {
+          "id": "resnet50",
+          "label": "ResNet-50",
+          "ready": true,
+          "master_optuna": false,
+          "arcgis_backbone": "resnet50",
+          "mtl_model": "linknet"
+        },
+        {
+          "id": "resnet101",
+          "label": "ResNet-101",
+          "ready": true,
+          "master_optuna": false,
+          "arcgis_backbone": "resnet101",
+          "mtl_model": "linknet"
+        },
+        {
+          "id": "resnet152",
+          "label": "ResNet-152",
+          "ready": true,
+          "master_optuna": false,
+          "arcgis_backbone": "resnet152",
+          "mtl_model": "linknet"
+        }
+      ]
+    },
+
+    "sam_lora": {
+      "label": "SAM-LoRA",
+      "default_backbone": "vit_b",
+      "backbones": [
+        {
+          "id": "vit_b",
+          "label": "ViT-B",
+          "ready": "checkpoint",
+          "master_optuna": true,
+          "checkpoint": "Roads/checkpoints/sam/sam_vit_b_01ec64.pth"
+        },
+        {
+          "id": "vit_l",
+          "label": "ViT-L",
+          "ready": "checkpoint",
+          "master_optuna": true,
+          "checkpoint": "Roads/checkpoints/sam/sam_vit_l_0b3195.pth"
+        },
+        {
+          "id": "vit_h",
+          "label": "ViT-H",
+          "ready": "checkpoint",
+          "master_optuna": true,
+          "checkpoint": "Roads/checkpoints/sam/sam_vit_h_4b8939.pth"
+        }
+      ]
+    }
+  }
+}

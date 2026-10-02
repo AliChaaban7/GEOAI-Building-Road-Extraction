@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+
+  "approach": {
+    "id": "roads",
+    "label": "Road Extraction",
+
+    "task": "binary_semantic_segmentation",
+
+    "description": "Deep learning-based road extraction from mixed-source aerial, satellite, and drone imagery."
+  },
+
+  "models": [
+    {
+      "id": "unet",
+      "label": "U-Net",
+
+      "family": "semantic_segmentation",
+
+      "enabled": true,
+
+      "supports_augmentation": true,
+      "supports_optuna": true,
+      "supports_master_optuna": true,
+      "supports_cross_validation": true
+    },
+
+    {
+      "id": "deeplabv3",
+      "label": "DeepLabV3+",
+
+      "family": "semantic_segmentation",
+
+      "enabled": true,
+
+      "supports_augmentation": true,
+      "supports_optuna": true,
+      "supports_master_optuna": true,
+      "supports_cross_validation": true
+    },
+
+    {
+      "id": "connectnet",
+      "label": "ConnectNet",
+
+      "family": "road_specific",
+
+      "enabled": true,
+
+      "supports_augmentation": true,
+      "supports_optuna": true,
+      "supports_master_optuna": true,
+      "supports_cross_validation": true
+    },
+
+    {
+      "id": "multitask_road_extractor",
+      "label": "Multi Task Road Extractor",
+
+      "family": "road_specific",
+
+      "enabled": true,
+
+      "supports_augmentation": true,
+      "supports_optuna": true,
+      "supports_master_optuna": true,
+      "supports_cross_validation": true
+    },
+
+    {
+      "id": "sam_lora",
+      "label": "SAM-LoRA",
+
+      "family": "foundation_model",
+
+      "enabled": true,
+
+      "supports_augmentation": true,
+      "supports_optuna": true,
+      "supports_master_optuna": true,
+      "supports_cross_validation": true
+    }
+  ],
+
+  "datasets": {
+    "source_type": {
+      "id": "mixed",
+      "label": "Mixed Source",
+
+      "sources": [
+        "aerial",
+        "satellite",
+        "drone"
+      ]
+    },
+
+    "tile_sizes": [
+      {
+        "value": 128,
+        "label": "128 x 128",
+        "dataset_id": "roads_ct_128_mixed"
+      },
+
+      {
+        "value": 192,
+        "label": "192 x 192",
+        "dataset_id": "roads_ct_192_mixed"
+      },
+
+      {
+        "value": 256,
+        "label": "256 x 256",
+        "dataset_id": "roads_ct_256_mixed"
+      },
+
+      {
+        "value": 384,
+        "label": "384 x 384",
+        "dataset_id": "roads_ct_384_mixed"
+      },
+
+      {
+        "value": 512,
+        "label": "512 x 512",
+        "dataset_id": "roads_ct_512_mixed"
+      }
+    ],
+
+    "default_tile_size": 256
+  },
+
+  "experiment_options": {
+    "augmentation": {
+      "label": "Data Augmentation",
+      "config_key": "use_augmentation",
+      "default": false
+    },
+
+    "optuna": {
+      "label": "Optuna",
+      "config_key": "use_optuna",
+      "default": false
+    },
+
+    "master_optuna": {
+      "label": "Master Optuna",
+      "config_key": "use_master_optuna",
+      "default": false
+    },
+
+    "cross_validation": {
+      "label": "Spatial Cross-Validation",
+      "config_key": "use_cross_validation",
+      "default": false
+    },
+
+    "threshold_search": {
+      "label": "Threshold Search",
+      "config_key": "use_threshold_search",
+      "default": true
+    },
+
+    "postprocessing": {
+      "label": "Road Post-Processing",
+      "config_key": "use_postprocessing",
+      "default": true
+    },
+
+    "error_analysis": {
+      "label": "Error Analysis",
+      "config_key": "use_error_analysis",
+      "default": false
+    },
+
+    "reporting": {
+      "label": "Experiment Reporting",
+      "config_key": "use_reporting",
+      "default": true
+    }
+  },
+
+  "training": {
+    "display_fields": [
+      "experiment_id",
+      "model_type",
+      "tile_size",
+      "source_type",
+      "epochs",
+      "batch_size",
+      "learning_rate",
+      "weight_decay"
+    ],
+
+    "show_gpu_status": true,
+
+    "show_training_progress": true,
+
+    "show_epoch_metrics": true,
+
+    "show_best_checkpoint": true
+  },
+
+  "validation": {
+    "show_iou": true,
+    "show_precision": true,
+    "show_recall": true,
+    "show_f1": true,
+    "show_cldice": true,
+
+    "show_threshold_search": true,
+
+    "show_postprocessing_search": true
+  },
+
+  "final_testing": {
+    "enabled": true,
+
+    "sources": [
+      {
+        "id": "aerial",
+        "label": "Aerial",
+
+        "native_pixel_size_m": 0.3,
+
+        "enabled": true,
+
+        "configured": false
+      },
+
+      {
+        "id": "satellite",
+        "label": "Satellite",
+
+        "native_pixel_size_m": 0.3,
+
+        "enabled": true,
+
+        "configured": true
+      },
+
+      {
+        "id": "drone",
+        "label": "Drone",
+
+        "native_pixel_size_m": 0.1,
+
+        "enabled": true,
+
+        "configured": false
+      }
+    ],
+
+    "metrics": [
+      "iou",
+      "precision",
+      "recall",
+      "f1",
+      "cldice"
+    ],
+
+    "show_source_comparison": true,
+
+    "show_mean_source_metrics": true
+  },
+
+  "results": {
+    "show_training_curves": true,
+
+    "show_validation_results": true,
+
+    "show_threshold_results": true,
+
+    "show_postprocessing_results": true,
+
+    "show_prediction_preview": true,
+
+    "show_probability_map": true,
+
+    "show_binary_mask": true,
+
+    "show_final_source_comparison": true,
+
+    "show_error_analysis": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model_type": "deeplabv3",
+  "display_name": "DeepLabV3+",
+  "task": "binary_semantic_segmentation",
+  "dataset_type": "ct",
+  "default_backbone": "resnet50",
+  "in_channels": 3,
+  "output_channels": 1,
+  "supported_backbones": {
+    "resnet50": {
+      "family": "resnet",
+      "pretrained": true,
+      "output_stride": 16,
+      "automatic_batch_size": 8
+    },
+    "resnet101": {
+      "family": "resnet",
+      "pretrained": true,
+      "output_stride": 16,
+      "automatic_batch_size": 4
+    },
+    "resnet152": {
+      "family": "resnet",
+      "pretrained": true,
+      "output_stride": 16,
+      "automatic_batch_size": 2
+    }
+  },
+  "architecture": {
+    "aspp_channels": 256,
+    "aspp_rates": [
+      6,
+      12,
+      18
+    ],
+    "low_level_channels": 48,
+    "decoder_channels": 256,
+    "dropout": 0.1,
+    "output_activation": null
+  }
+}

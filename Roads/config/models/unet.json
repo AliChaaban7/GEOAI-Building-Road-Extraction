@@ -1,0 +1,52 @@
+{
+  "model_type": "unet",
+  "task": "binary_semantic_segmentation",
+  "dataset_type": "ct",
+  "default_backbone": "vanilla_unet",
+  "in_channels": 3,
+  "output_channels": 1,
+  "supported_backbones": {
+    "vanilla_unet": {
+      "family": "custom_unet",
+      "pretrained": false,
+      "automatic_batch_size": 8
+    },
+    "resnet18": {
+      "family": "resnet_encoder_unet",
+      "pretrained": true,
+      "automatic_batch_size": 8
+    },
+    "resnet34": {
+      "family": "resnet_encoder_unet",
+      "pretrained": true,
+      "automatic_batch_size": 8
+    },
+    "resnet50": {
+      "family": "resnet_encoder_unet",
+      "pretrained": true,
+      "automatic_batch_size": 6
+    },
+    "resnet101": {
+      "family": "resnet_encoder_unet",
+      "pretrained": true,
+      "automatic_batch_size": 4
+    },
+    "resnet152": {
+      "family": "resnet_encoder_unet",
+      "pretrained": true,
+      "automatic_batch_size": 2
+    }
+  },
+  "architecture": {
+    "vanilla_channels": [
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "normalization": "batchnorm",
+    "activation": "relu",
+    "output_activation": null
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+
+  "approach": "roads",
+
+  "enabled": true,
+
+  "task": "binary_road_mask_postprocessing",
+
+  "selection": {
+    "dataset": "validation_only",
+
+    "primary_metric": "iou",
+
+    "secondary_metric": "cldice",
+
+    "use_secondary_as_tiebreaker": true,
+
+    "final_test_search_allowed": false
+  },
+
+  "input": {
+    "type": "binary_mask",
+
+    "threshold_source": "frozen_validation_threshold",
+
+    "foreground_value": 1,
+
+    "background_value": 0
+  },
+
+  "operations": {
+    "remove_small_components": {
+      "enabled": true,
+
+      "candidate_min_component_pixels": [
+        0,
+        10,
+        25,
+        50,
+        75,
+        100,
+        150,
+        200
+      ],
+
+      "connectivity": 8
+    },
+
+    "morphological_closing": {
+      "enabled": true,
+
+      "candidate_radius_pixels": [
+        0,
+        1,
+        2,
+        3
+      ],
+
+      "kernel_shape": "ellipse",
+
+      "iterations": 1
+    },
+
+    "bridge_small_gaps": {
+      "enabled": true,
+
+      "candidate_gap_pixels": [
+        0,
+        1,
+        2,
+        3
+      ],
+
+      "preserve_existing_roads": true
+    },
+
+    "fill_small_holes": {
+      "enabled": true,
+
+      "candidate_max_hole_pixels": [
+        0,
+        10,
+        25,
+        50,
+        100,
+        150
+      ]
+    }
+  },
+
+  "disabled_operations": {
+    "erosion": {
+      "enabled": false,
+
+      "reason": "Can unnecessarily narrow or disconnect predicted road surfaces."
+    },
+
+    "aggressive_opening": {
+      "enabled": false,
+
+      "reason": "Can remove narrow road sections and reduce network continuity."
+    },
+
+    "skeletonization": {
+      "enabled": false,
+
+      "reason": "The primary output is a road-surface segmentation mask rather than a road centerline."
+    },
+
+    "polygon_simplification": {
+      "enabled": false,
+
+      "reason": "GIS vector simplification is handled separately after raster prediction."
+    }
+  },
+
+  "search": {
+    "method": "grid",
+
+    "evaluate_original_mask": true,
+
+    "maximum_combinations": null,
+
+    "stop_on_first_improvement": false,
+
+    "save_every_combination": false,
+
+    "save_best_only": true
+  },
+
+  "mixed_source_policy": {
+    "parameter_units": "pixels",
+
+    "reason": "The validation dataset contains imagery with different native spatial resolutions, therefore validation-stage morphology is represented in pixel units.",
+
+    "source_specific_validation_tuning": false
+  },
+
+  "road_connectivity_policy": {
+    "preserve_long_connected_components": true,
+
+    "avoid_fragmentation": true,
+
+    "prefer_gap_repair_over_aggressive_removal": true,
+
+    "calculate_cldice_after_postprocessing": true
+  },
+
+  "freeze_policy": {
+    "freeze_after_validation_selection": true,
+
+    "apply_same_configuration_to_all_final_sources": true,
+
+    "source_specific_retuning": false,
+
+    "final_test_ground_truth_used_for_selection": false
+  },
+
+  "gis_postprocessing": {
+    "enabled_after_raster_inference": true,
+
+    "raster_to_polygon": true,
+
+    "repair_geometry": true,
+
+    "dissolve_adjacent_road_polygons": true,
+
+    "remove_slivers": true,
+
+    "smoothing": {
+      "enabled": false
+    },
+
+    "centerline_generation": {
+      "enabled": false,
+
+      "role": "optional_secondary_output"
+    }
+  },
+
+  "outputs": {
+    "save_best_parameters": true,
+
+    "save_search_results_csv": true,
+
+    "save_before_postprocessing_mask": true,
+
+    "save_after_postprocessing_mask": true,
+
+    "save_comparison_metrics": true
+  }
+}

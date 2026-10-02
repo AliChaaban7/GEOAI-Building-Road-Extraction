@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+
+  "model": {
+    "id": "multitask_road_extractor",
+
+    "name": "Multi Task Road Extractor",
+
+    "approach": "roads",
+
+    "task": "binary_semantic_segmentation",
+
+    "family": "road_specific_multitask",
+
+    "description": "ArcGIS Learn road-specific multi-task model that jointly learns road segmentation and road orientation to improve extraction continuity and connectivity."
+  },
+
+  "architecture": {
+    "implementation": "arcgis_learn",
+
+    "arcgis_class": "MultiTaskRoadExtractor",
+
+    "input_channels": 3,
+
+    "binary_segmentation": true,
+
+    "mtl_model": "hourglass",
+
+    "backbone": null,
+
+    "pretrained_path": null,
+
+    "tasks": [
+      "road_segmentation",
+      "road_orientation"
+    ],
+
+    "connectivity_aware": true,
+
+    "return_probability_mask": true
+  },
+
+  "data": {
+    "metadata_format": "classified_tiles",
+
+    "prepare_data_backend": "arcgis.learn.prepare_data",
+
+    "chip_size_source": "experiment.tile_size",
+
+    "validation_split_source": "experiment.data_split",
+
+    "source_type": "mixed",
+
+    "sources": [
+      "aerial",
+      "satellite",
+      "drone"
+    ]
+  },
+
+  "training": {
+    "inherit_general_params": true,
+
+    "epochs": 40,
+
+    "batch_size": 4,
+
+    "learning_rate": 0.0001,
+
+    "weight_decay": 0.00001,
+
+    "use_gpu": true,
+
+    "use_amp": true,
+
+    "monitor": "valid_loss"
+  },
+
+  "advanced_parameters": {
+    "gaussian_thresh": null,
+
+    "orient_bin_size": null,
+
+    "orient_theta": null,
+
+    "use_arcgis_defaults_when_null": true
+  },
+
+  "validation": {
+    "default_probability_threshold": 0.5,
+
+    "checkpoint_selection_metric": "validation_iou",
+
+    "checkpoint_selection_mode": "max",
+
+    "calculate_iou": true,
+
+    "calculate_precision": true,
+
+    "calculate_recall": true,
+
+    "calculate_f1": true,
+
+    "calculate_cldice": true
+  },
+
+  "augmentation": {
+    "supported": true,
+
+    "config_reference": "../optional/augmentation.json"
+  },
+
+  "optuna": {
+    "supported": true,
+
+    "config_reference": "../optional/optuna.json"
+  },
+
+  "master_optuna": {
+    "supported": true,
+
+    "search_space_reference": "../optional/master_optuna_search_space.json"
+  },
+
+  "cross_validation": {
+    "supported": true,
+
+    "config_reference": "../optional/cross_validation.json"
+  },
+
+  "threshold_search": {
+    "supported": true,
+
+    "selection_dataset": "validation_only"
+  },
+
+  "postprocessing": {
+    "supported": true,
+
+    "selection_dataset": "validation_only",
+
+    "config_reference": "../optional/postprocessing.json"
+  },
+
+  "final_testing": {
+    "supported": true,
+
+    "use_frozen_model": true,
+
+    "use_frozen_threshold": true,
+
+    "use_frozen_postprocessing": true,
+
+    "source_specific_retuning": false,
+
+    "sources": [
+      "aerial",
+      "satellite",
+      "drone"
+    ]
+  },
+
+  "export": {
+    "save_arcgis_model": true,
+
+    "save_dlpk": true,
+
+    "save_emd": true,
+
+    "save_training_metrics": true
+  },
+
+  "outputs": {
+    "save_validation_predictions": true,
+
+    "save_probability_maps": true,
+
+    "save_binary_masks": true,
+
+    "save_training_history": true,
+
+    "save_final_test_predictions": true
+  }
+}

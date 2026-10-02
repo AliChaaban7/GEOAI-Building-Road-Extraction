@@ -1,0 +1,71 @@
+{
+  "project_root": "D:/Ali Chaaban Thesis Project/GeoAI_Thesis_Codebase",
+  "roads_root": "D:/Ali Chaaban Thesis Project/GeoAI_Thesis_Codebase/Roads",
+
+  "data_root": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads",
+  "training_data_root": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads",
+
+  "outputs_root": "D:/Ali Chaaban Thesis Project/GeoAI_Thesis_Codebase/Roads/outputs",
+  "checkpoints_root": "D:/Ali Chaaban Thesis Project/GeoAI_Thesis_Codebase/Roads/checkpoints",
+
+  "training": {
+    "exported_data_root": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads",
+
+    "classified_tiles": {
+      "128": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_128_Roads_03",
+      "192": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_192_Roads_03",
+      "256": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_256_Roads_03",
+      "384": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_384_Roads_03",
+      "512": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_512_Roads_03"
+    }
+  },
+
+  "sam_pretrained_checkpoint": "checkpoints/sam/sam_vit_b_01ec64.pth",
+  "sam_pretrained_checkpoint_path": null,
+
+  "sam": {
+    "backbone": "vit_b",
+    "official_sam_checkpoint": "checkpoints/sam/sam_vit_b_01ec64.pth",
+    "source": "official_meta_sam",
+    "road_specific_reference": true,
+    "allow_buildings_checkpoint_auto_discovery": false
+  },
+
+  "project_gdb": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb",
+
+  "scratch_workspace": "D:/ArcGIS_Temp",
+
+  "overwrite_output": true,
+
+  "final_tests": {
+    "aerial": {
+      "enabled": true,
+      "source_type": "aerial",
+      "native_resolution_m": 0.3,
+      "raster": null,
+      "ground_truth": null,
+      "test_zone": null
+    },
+
+    "satellite": {
+      "enabled": true,
+      "source_type": "satellite",
+      "native_resolution_m": 0.3,
+
+      "raster": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/SatelliteTesingZone",
+
+      "ground_truth": "C:/Users/gis-t12/Documents/ArcGIS/Projects/AliChaabanThesis/AliChaabanThesis.gdb/Road_Test_Label",
+
+      "test_zone": null
+    },
+
+    "drone": {
+      "enabled": true,
+      "source_type": "drone",
+      "native_resolution_m": 0.1,
+      "raster": null,
+      "ground_truth": null,
+      "test_zone": null
+    }
+  }
+}

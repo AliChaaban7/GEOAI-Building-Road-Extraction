@@ -1,0 +1,1625 @@
+/* =========================================================
+   GEOAI MASTER WEBSITE
+   ========================================================= */
+
+:root {
+    --bg: #07101d;
+    --bg-soft: #0b1728;
+    --panel: #101e31;
+    --panel-2: #13243a;
+    --line: rgba(148, 163, 184, 0.18);
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --blue: #38bdf8;
+    --blue-2: #0284c7;
+    --teal: #2dd4bf;
+    --teal-2: #0f766e;
+}
+
+/* Hide Streamlit chrome and ALL legacy automatic navigation. */
+[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+[data-testid="stSidebarNav"] {
+    display: none !important;
+}
+
+[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+.stApp {
+    background:
+        radial-gradient(
+            circle at 82% -5%,
+            rgba(14, 165, 233, 0.18),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 5% 30%,
+            rgba(20, 184, 166, 0.09),
+            transparent 30%
+        ),
+        #07101d;
+}
+
+.block-container {
+    max-width: 1320px;
+    padding-top: 1.15rem;
+    padding-bottom: 4rem;
+}
+
+/* =========================================================
+   WEBSITE TOP BAR
+   ========================================================= */
+
+.st-key-website_topbar {
+    position: sticky;
+    top: 0.55rem;
+    z-index: 999;
+
+    padding: 0.72rem 0.85rem;
+
+    margin-bottom: 0.55rem;
+
+    border: 1px solid var(--line);
+    border-radius: 16px;
+
+    background: rgba(7, 16, 29, 0.92);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 14px 40px
+        rgba(0, 0, 0, 0.20);
+}
+
+.site-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.site-brand-mark {
+    color: white;
+    font-size: 1.12rem;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+}
+
+.site-brand-mark span {
+    color: var(--blue);
+}
+
+.site-brand-copy {
+    color: #94a3b8;
+    font-size: 0.78rem;
+    font-weight: 650;
+}
+
+.st-key-website_topbar .stButton > button {
+    min-height: 39px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    font-weight: 750;
+}
+
+/* =========================================================
+   SYSTEM STRIP
+   ========================================================= */
+
+.system-strip {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+
+    margin-bottom: 1rem;
+
+    padding:
+        0.42rem
+        0.25rem;
+
+    color: #94a3b8;
+    font-size: 0.72rem;
+}
+
+.system-strip > div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.system-strip-right {
+    margin-left: auto;
+}
+
+.system-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.system-dot.online {
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.55);
+}
+
+.system-dot.offline {
+    background: #ef4444;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.web-hero {
+    padding:
+        5.2rem
+        1rem
+        4.6rem
+        1rem;
+
+    text-align: center;
+}
+
+.web-hero-kicker {
+    color: var(--blue);
+
+    font-size: 0.76rem;
+    font-weight: 850;
+
+    letter-spacing: 0.18em;
+}
+
+.web-hero-title {
+    max-width: 980px;
+
+    margin:
+        0.9rem
+        auto
+        0
+        auto;
+
+    color: white;
+
+    font-size: clamp(2.6rem, 5vw, 5.2rem);
+    line-height: 0.99;
+    letter-spacing: -0.055em;
+
+    font-weight: 950;
+}
+
+.web-hero-title span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7dd3fc,
+            #2dd4bf
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.web-hero-copy {
+    max-width: 780px;
+
+    margin:
+        1.3rem
+        auto
+        0
+        auto;
+
+    color: #b8c6d9;
+
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.web-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 0.5rem;
+
+    margin-top: 1.45rem;
+}
+
+.web-hero-tags span {
+    padding:
+        0.38rem
+        0.62rem;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(125, 211, 252, 0.16);
+
+    background:
+        rgba(15, 30, 49, 0.62);
+
+    color: #bfd5ea;
+
+    font-size: 0.73rem;
+}
+
+/* =========================================================
+   METRIC CARDS
+   ========================================================= */
+
+.metric-card {
+    min-height: 150px;
+
+    padding: 1.15rem;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 30, 49, 0.96),
+            rgba(11, 23, 40, 0.96)
+        );
+}
+
+.metric-value {
+    color: #7dd3fc;
+
+    font-size: 2rem;
+    font-weight: 950;
+}
+
+.metric-label {
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    margin-top: 0.18rem;
+}
+
+.metric-detail {
+    color: #8092a8;
+
+    font-size: 0.72rem;
+
+    margin-top: 0.42rem;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.web-section-heading {
+    margin:
+        5rem
+        0
+        1.45rem
+        0;
+
+    text-align: center;
+}
+
+.web-section-kicker {
+    color: var(--teal);
+
+    font-size: 0.72rem;
+    font-weight: 850;
+
+    letter-spacing: 0.16em;
+}
+
+.web-section-title {
+    color: white;
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    letter-spacing: -0.035em;
+
+    margin-top: 0.32rem;
+}
+
+.web-section-copy {
+    max-width: 690px;
+
+    margin:
+        0.55rem
+        auto
+        0
+        auto;
+
+    color: #94a3b8;
+
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   APPROACH CARDS
+   ========================================================= */
+
+.module-card {
+    min-height: 340px;
+
+    padding: 1.55rem;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 33, 54, 0.98),
+            rgba(9, 22, 38, 0.98)
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.18);
+}
+
+.building-module {
+    border-top:
+        4px solid
+        #38bdf8;
+}
+
+.road-module {
+    border-top:
+        4px solid
+        #2dd4bf;
+}
+
+.module-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-number {
+    color: #5f738c;
+
+    font-size: 0.72rem;
+    font-weight: 850;
+
+    letter-spacing: 0.1em;
+}
+
+.module-icon {
+    color: #dbeafe;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(56, 189, 248, 0.08);
+
+    border:
+        1px solid
+        rgba(125, 211, 252, 0.14);
+
+    font-weight: 900;
+}
+
+.module-name {
+    color: white;
+
+    font-size: 1.6rem;
+    font-weight: 900;
+
+    letter-spacing: -0.03em;
+
+    margin-top: 1.2rem;
+}
+
+.module-description {
+    color: #9fb0c3;
+
+    font-size: 0.87rem;
+    line-height: 1.65;
+
+    margin-top: 0.65rem;
+}
+
+.module-models {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.46rem;
+
+    margin-top: 1.25rem;
+}
+
+.module-models span {
+    padding:
+        0.35rem
+        0.55rem;
+
+    border-radius: 8px;
+
+    color: #cbd5e1;
+
+    background:
+        rgba(148, 163, 184, 0.07);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.13);
+
+    font-size: 0.72rem;
+}
+
+/* =========================================================
+   WORKFLOW
+   ========================================================= */
+
+.workflow-heading {
+    margin-bottom: 1.1rem;
+}
+
+.website-workflow {
+    display: grid;
+
+    grid-template-columns:
+        1fr auto
+        1fr auto
+        1fr auto
+        1fr auto
+        1fr auto
+        1fr;
+
+    gap: 0.5rem;
+
+    align-items: center;
+}
+
+.workflow-node {
+    min-height: 130px;
+
+    padding: 0.9rem;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        rgba(14, 28, 46, 0.82);
+}
+
+.workflow-number {
+    color: #38bdf8;
+
+    font-size: 0.67rem;
+    font-weight: 900;
+}
+
+.workflow-name {
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 850;
+
+    margin-top: 0.65rem;
+}
+
+.workflow-copy {
+    color: #7f92a9;
+
+    font-size: 0.68rem;
+    line-height: 1.45;
+
+    margin-top: 0.35rem;
+}
+
+.workflow-arrow {
+    color: #475569;
+}
+
+/* =========================================================
+   COMPARISON CTA
+   ========================================================= */
+
+.comparison-hero {
+    margin-top: 5rem;
+
+    padding:
+        1.6rem
+        1.7rem;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(45, 212, 191, 0.18);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(15, 118, 110, 0.14),
+            rgba(2, 132, 199, 0.10)
+        );
+}
+
+.comparison-kicker {
+    color: #5eead4;
+
+    font-size: 0.7rem;
+    font-weight: 900;
+
+    letter-spacing: 0.14em;
+}
+
+.comparison-title {
+    color: white;
+
+    font-size: 1.35rem;
+    font-weight: 900;
+
+    margin-top: 0.25rem;
+}
+
+.comparison-copy {
+    color: #9fb0c3;
+
+    font-size: 0.82rem;
+
+    margin-top: 0.35rem;
+}
+
+/* =========================================================
+   BUILDINGS LEGACY WRAPPER
+   ========================================================= */
+
+.embedded-module-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding:
+        0.8rem
+        0.95rem;
+
+    margin-bottom: 0.8rem;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.20);
+
+    border-radius: 12px;
+
+    background:
+        rgba(13, 30, 50, 0.92);
+}
+
+.embedded-module-kicker {
+    color: #7dd3fc;
+
+    font-size: 0.65rem;
+    font-weight: 900;
+
+    letter-spacing: 0.14em;
+}
+
+.embedded-module-title {
+    color: white;
+
+    font-size: 0.92rem;
+    font-weight: 800;
+
+    margin-top: 0.1rem;
+}
+
+.embedded-module-state {
+    color: #86efac;
+
+    font-size: 0.65rem;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   COMMON STREAMLIT POLISH
+   ========================================================= */
+
+.stButton > button {
+    min-height: 44px;
+
+    border-radius: 11px;
+
+    font-weight: 800;
+}
+
+[data-testid="stDataFrame"] {
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 11px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+    .system-strip-right {
+        display: none;
+    }
+
+    .website-workflow {
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+    .workflow-arrow {
+        display: none;
+    }
+
+    .site-brand-copy {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   APPROACH WORKSPACE — SHARED BUILDINGS / ROADS
+   ========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    margin: 1.25rem 0 1.1rem 0;
+    padding: 1.55rem 1.65rem;
+    border: 1px solid rgba(56, 189, 248, 0.20);
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            115deg,
+            rgba(14, 32, 54, 0.98),
+            rgba(12, 72, 91, 0.90)
+        );
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: -70px;
+    top: -105px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.08);
+}
+
+.hero-eyebrow {
+    color: #67e8f9;
+    font-size: 0.70rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    margin-top: 0.28rem;
+    font-size: 2rem;
+    font-weight: 950;
+    letter-spacing: -0.035em;
+}
+
+.hero-subtitle {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    color: #c5d7e8;
+    margin-top: 0.30rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 1.55rem 0 0.8rem 0;
+    padding: 0.90rem 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 13px;
+    background: rgba(15, 30, 49, 0.92);
+}
+
+.section-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 10px;
+    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #0284c7,
+            #0f766e
+        );
+    font-size: 0.82rem;
+    font-weight: 950;
+}
+
+.section-title {
+    color: #f8fafc;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.section-subtitle {
+    color: #8fa2b8;
+    margin-top: 0.12rem;
+    font-size: 0.76rem;
+    line-height: 1.45;
+}
+
+.subsection-title {
+    color: #e2e8f0;
+    font-weight: 850;
+}
+
+.subsection-subtitle {
+    color: #94a3b8;
+    font-size: 0.78rem;
+}
+
+.info-banner,
+.success-banner,
+.architecture-banner,
+.backend-badge,
+.status-banner {
+    margin: 0.55rem 0 0.85rem 0;
+    padding: 0.72rem 0.82rem;
+    border-radius: 10px;
+    font-size: 0.80rem;
+    line-height: 1.5;
+}
+
+.info-banner {
+    color: #dbeafe;
+    border: 1px solid rgba(59, 130, 246, 0.22);
+    background: rgba(30, 64, 175, 0.12);
+}
+
+.success-banner {
+    color: #d1fae5;
+    border: 1px solid rgba(45, 212, 191, 0.22);
+    background: rgba(13, 148, 136, 0.11);
+}
+
+.architecture-banner {
+    color: #ede9fe;
+    border: 1px solid rgba(167, 139, 250, 0.22);
+    background: rgba(109, 40, 217, 0.10);
+}
+
+.backend-badge {
+    display: inline-block;
+    color: #dbeafe;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(30, 41, 59, 0.78);
+}
+
+.banner-separator {
+    margin: 0 0.55rem;
+    color: #64748b;
+}
+
+.status-info {
+    color: #dbeafe;
+    background: rgba(30, 64, 175, 0.12);
+}
+
+.status-success {
+    color: #d1fae5;
+    background: rgba(13, 148, 136, 0.11);
+}
+
+.status-warning {
+    color: #fef3c7;
+    background: rgba(180, 83, 9, 0.12);
+}
+
+.status-neutral {
+    color: #cbd5e1;
+    background: rgba(51, 65, 85, 0.20);
+}
+
+/* Form widgets inside research workspaces */
+[data-testid="stSelectbox"] label,
+[data-testid="stNumberInput"] label,
+[data-testid="stTextInput"] label,
+[data-testid="stCheckbox"] label {
+    color: #dbeafe !important;
+}
+
+[data-testid="stDataFrame"] {
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 13px;
+    overflow: hidden;
+}
+/* =========================================================
+   ROADS — DARK MODERN / PROFESSIONAL
+   Selected UI concept: Dark Horizontal Cards
+   Keeps the Home page's navy + cyan/teal visual identity.
+   ========================================================= */
+
+.st-key-roads_page {
+    --road-bg: #081321;
+    --road-panel: #0d1b2b;
+    --road-panel-2: #102237;
+    --road-panel-3: #132a42;
+    --road-line: rgba(125, 211, 252, 0.14);
+    --road-line-strong: rgba(56, 189, 248, 0.28);
+    --road-text: #f8fafc;
+    --road-muted: #91a6bd;
+    --road-blue: #22a8ff;
+    --road-blue-2: #0b72e7;
+    --road-cyan: #54d6ff;
+    --road-teal: #16c7ad;
+    --road-purple: #7c5cff;
+    --road-green: #11b981;
+}
+
+/* ---------- Page typography ---------- */
+
+.st-key-roads_page h1,
+.st-key-roads_page h2,
+.st-key-roads_page h3,
+.st-key-roads_page h4,
+.st-key-roads_page p,
+.st-key-roads_page label,
+.st-key-roads_page .stMarkdown {
+    color: var(--road-text);
+}
+
+.st-key-roads_page [data-testid="stCaptionContainer"] {
+    color: var(--road-muted) !important;
+}
+
+/* ---------- Approach hero ---------- */
+
+.st-key-roads_page .hero {
+    margin-top: 1.15rem;
+    padding: 1.55rem 1.65rem;
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-radius: 18px;
+    background:
+        radial-gradient(
+            circle at 88% 18%,
+            rgba(56, 189, 248, 0.16),
+            transparent 27%
+        ),
+        linear-gradient(
+            120deg,
+            rgba(10, 28, 47, 0.99),
+            rgba(10, 46, 67, 0.94)
+        );
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.st-key-roads_page .hero-eyebrow {
+    color: var(--road-cyan);
+}
+
+.st-key-roads_page .hero-title {
+    color: #ffffff;
+}
+
+.st-key-roads_page .hero-subtitle {
+    color: #b7c8da;
+}
+
+/* ---------- Section headers ---------- */
+
+.st-key-roads_page .section-header {
+    margin-top: 1.55rem;
+    padding: 0.82rem 0.95rem;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-left: 3px solid var(--road-blue);
+    border-radius: 13px;
+    background:
+        linear-gradient(
+            100deg,
+            rgba(15, 31, 50, 0.98),
+            rgba(12, 27, 45, 0.94)
+        );
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.st-key-roads_page .section-index {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 9px;
+    background:
+        linear-gradient(
+            135deg,
+            #0b78e3,
+            #18b8c6
+        );
+    box-shadow: 0 5px 16px rgba(11, 120, 227, 0.22);
+}
+
+.st-key-roads_page .section-title {
+    color: #f8fafc;
+    font-size: 1.02rem;
+}
+
+.st-key-roads_page .section-subtitle {
+    color: #8fa4bb;
+}
+
+/* ---------- Horizontal control cards ---------- */
+
+.st-key-roads_primary_controls,
+.st-key-roads_split_controls,
+.st-key-roads_optimization_controls {
+    margin: 0.55rem 0 0.82rem 0;
+    padding: 0.75rem 0.78rem 0.68rem 0.78rem;
+    border: 1px solid rgba(125, 211, 252, 0.12);
+    border-radius: 15px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 34, 55, 0.95),
+            rgba(11, 25, 42, 0.97)
+        );
+    box-shadow:
+        0 13px 34px rgba(0, 0, 0, 0.17),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+/* Individual controls appear as clean horizontal mini-cards. */
+.st-key-roads_primary_controls [data-testid="stColumn"],
+.st-key-roads_split_controls [data-testid="stColumn"],
+.st-key-roads_optimization_controls [data-testid="stColumn"] {
+    padding: 0.45rem 0.52rem 0.52rem 0.52rem;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 11px;
+    background: rgba(20, 41, 64, 0.58);
+}
+
+/* ---------- Labels ---------- */
+
+.st-key-roads_page [data-testid="stSelectbox"] label,
+.st-key-roads_page [data-testid="stTextInput"] label,
+.st-key-roads_page [data-testid="stNumberInput"] label,
+.st-key-roads_page [data-testid="stCheckbox"] label {
+    color: #cfe6f8 !important;
+    font-size: 0.76rem !important;
+    font-weight: 800 !important;
+}
+
+/* ---------- Select / input surfaces ---------- */
+
+.st-key-roads_page div[data-baseweb="select"] > div,
+.st-key-roads_page [data-testid="stTextInput"] input,
+.st-key-roads_page [data-testid="stNumberInput"] input {
+    min-height: 42px;
+    color: #f8fafc !important;
+    border-color: rgba(125, 211, 252, 0.18) !important;
+    border-radius: 9px !important;
+    background: rgba(7, 20, 34, 0.88) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.02),
+        0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.st-key-roads_page div[data-baseweb="select"] > div:hover,
+.st-key-roads_page [data-testid="stTextInput"] input:hover,
+.st-key-roads_page [data-testid="stNumberInput"] input:hover {
+    border-color: rgba(84, 214, 255, 0.38) !important;
+}
+
+.st-key-roads_page div[data-baseweb="select"] span,
+.st-key-roads_page div[data-baseweb="select"] svg {
+    color: #d9ecfa !important;
+    fill: #d9ecfa !important;
+}
+
+.st-key-roads_page input:disabled {
+    color: #9fb4c9 !important;
+    -webkit-text-fill-color: #9fb4c9 !important;
+    opacity: 1 !important;
+}
+
+/* Number-input increment buttons */
+.st-key-roads_page [data-testid="stNumberInput"] button {
+    color: #cde8fa !important;
+    border-color: rgba(125, 211, 252, 0.12) !important;
+    background: rgba(16, 38, 61, 0.95) !important;
+}
+
+/* ---------- Checkbox cards ---------- */
+
+.st-key-roads_optimization_controls [data-testid="stCheckbox"] {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.15rem;
+}
+
+/* ---------- Dataset / split / architecture banners ---------- */
+
+.st-key-roads_page .info-banner,
+.st-key-roads_page .success-banner,
+.st-key-roads_page .architecture-banner,
+.st-key-roads_page .backend-badge,
+.st-key-roads_page .status-banner {
+    border-radius: 11px;
+    backdrop-filter: blur(8px);
+}
+
+.st-key-roads_page .info-banner {
+    color: #cfeaff;
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    background: rgba(14, 72, 112, 0.18);
+}
+
+.st-key-roads_page .success-banner {
+    color: #c9faec;
+    border: 1px solid rgba(45, 212, 191, 0.18);
+    background: rgba(15, 118, 110, 0.16);
+}
+
+.st-key-roads_page .architecture-banner {
+    color: #e7e1ff;
+    border: 1px solid rgba(124, 92, 255, 0.23);
+    background:
+        linear-gradient(
+            100deg,
+            rgba(76, 54, 170, 0.17),
+            rgba(52, 42, 103, 0.12)
+        );
+}
+
+.st-key-roads_page .backend-badge {
+    color: #d8efff;
+    border: 1px solid rgba(125, 211, 252, 0.15);
+    background: rgba(20, 41, 64, 0.76);
+}
+
+/* ---------- Streamlit alerts ---------- */
+
+.st-key-roads_page [data-testid="stAlert"] {
+    border-radius: 11px;
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    background: rgba(15, 31, 49, 0.88);
+}
+
+/* ---------- Expanders ---------- */
+
+.st-key-roads_page [data-testid="stExpander"] {
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 12px;
+    background: rgba(12, 28, 46, 0.80);
+}
+
+/* ---------- Metrics ---------- */
+
+.st-key-roads_page [data-testid="stMetric"] {
+    padding: 0.82rem;
+    border: 1px solid rgba(125, 211, 252, 0.12);
+    border-radius: 12px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 35, 56, 0.95),
+            rgba(10, 25, 42, 0.97)
+        );
+}
+
+.st-key-roads_page [data-testid="stMetricLabel"] {
+    color: #8fa4bb !important;
+}
+
+.st-key-roads_page [data-testid="stMetricValue"] {
+    color: #f8fafc !important;
+}
+
+/* ---------- Dataframes ---------- */
+
+.st-key-roads_page [data-testid="stDataFrame"] {
+    border: 1px solid rgba(125, 211, 252, 0.13);
+    border-radius: 13px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.13);
+}
+
+/* ---------- Main action buttons ---------- */
+
+.st-key-roads_action_train,
+.st-key-roads_action_optuna,
+.st-key-roads_action_master {
+    margin-top: 0.55rem;
+}
+
+.st-key-roads_action_train .stButton > button,
+.st-key-roads_action_optuna .stButton > button,
+.st-key-roads_action_master .stButton > button {
+    min-height: 48px;
+    border: 0 !important;
+    border-radius: 10px;
+    color: #ffffff !important;
+    font-size: 0.88rem;
+    font-weight: 900;
+    letter-spacing: 0.005em;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.20);
+    transition:
+        transform 0.16s ease,
+        filter 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+.st-key-roads_action_train .stButton > button {
+    background:
+        linear-gradient(
+            90deg,
+            #0876e8,
+            #16a9f4
+        ) !important;
+}
+
+.st-key-roads_action_optuna .stButton > button {
+    background:
+        linear-gradient(
+            90deg,
+            #654cf1,
+            #8959f4
+        ) !important;
+}
+
+.st-key-roads_action_master .stButton > button {
+    background:
+        linear-gradient(
+            90deg,
+            #0d9d75,
+            #16bd87
+        ) !important;
+}
+
+.st-key-roads_action_train .stButton > button:hover,
+.st-key-roads_action_optuna .stButton > button:hover,
+.st-key-roads_action_master .stButton > button:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 13px 28px rgba(0, 0, 0, 0.26);
+}
+
+/* Disabled action remains visibly disabled. */
+.st-key-roads_page .stButton > button:disabled {
+    opacity: 0.46 !important;
+    filter: saturate(0.45) !important;
+    cursor: not-allowed !important;
+}
+
+/* ---------- Secondary buttons ---------- */
+
+.st-key-roads_page .stButton > button:not([kind="primary"]) {
+    color: #dbeafe;
+    border: 1px solid rgba(125, 211, 252, 0.17);
+    background: rgba(18, 39, 62, 0.86);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .st-key-roads_primary_controls,
+    .st-key-roads_split_controls,
+    .st-key-roads_optimization_controls {
+        padding: 0.62rem;
+    }
+
+    .st-key-roads_page .hero {
+        padding: 1.25rem;
+    }
+}
+
+/* GEOAI CINEMATIC WORKSPACE UPGRADE — SCREENSHOT-INSPIRED */
+
+/* =========================================================
+   ROAD WORKSPACE — IMAGE OUTSIDE CONTENT CARDS
+   ========================================================= */
+
+/*
+The aerial/highway image now belongs to the FULL Streamlit page background,
+outside the Road workspace/content cards.
+*/
+.stApp:has(.st-key-roads_page) {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4, 15, 28, 0.58) 0px,
+            rgba(4, 15, 28, 0.44) 180px,
+            rgba(4, 15, 28, 0.38) 360px,
+            rgba(5, 17, 30, 0.66) 620px,
+            #07101d 920px,
+            #07101d 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(5, 18, 34, 0.50) 0%,
+            rgba(5, 18, 34, 0.25) 55%,
+            rgba(5, 18, 34, 0.12) 100%
+        ),
+        url("https://images.unsplash.com/photo-1774799888329-b049c091461e?auto=format&fit=crop&fm=jpg&q=85&w=2400")
+        center 110px / cover no-repeat fixed !important;
+}
+
+.st-key-roads_page {
+    position: relative !important;
+    isolation: auto !important;
+    overflow: visible !important;
+    margin-top: 0.45rem !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+/* All page content sits above the workspace background. */
+.st-key-roads_page > div {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------------------------------------------------------
+   Road hero is now a CLEAN DARK CARD — NO PHOTO INSIDE.
+   --------------------------------------------------------- */
+
+.st-key-roads_page .hero {
+    position: relative !important;
+    overflow: hidden !important;
+    min-height: 165px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+
+    padding:
+        1.55rem
+        1.7rem !important;
+
+    border:
+        1px solid
+        rgba(71, 183, 255, 0.24) !important;
+
+    border-radius:
+        18px !important;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(9, 27, 46, 0.98),
+            rgba(10, 37, 58, 0.96)
+        ) !important;
+
+    box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+/* Remove the old photo-overlay behavior from the card. */
+.st-key-roads_page .hero::after {
+    content: none !important;
+}
+
+.st-key-roads_page .hero > * {
+    position: relative;
+    z-index: 1;
+    max-width: 790px;
+}
+
+.st-key-roads_page .hero-eyebrow {
+    color: #5bd8ff !important;
+    letter-spacing: 0.16em !important;
+    font-weight: 900 !important;
+}
+
+.st-key-roads_page .hero-title {
+    color: #ffffff !important;
+    font-size: clamp(1.85rem, 3vw, 2.65rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.03em !important;
+    text-shadow: none !important;
+}
+
+.st-key-roads_page .hero-subtitle {
+    color: #c0d4e6 !important;
+    max-width: 720px !important;
+}
+
+/* =========================================================
+   ROAD SETUP CONTROLS — SCREENSHOT-STYLE CARDS
+   ========================================================= */
+
+.st-key-roads_primary_controls {
+    padding: 0.72rem !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(90, 184, 245, 0.14) !important;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(11, 29, 48, 0.98),
+            rgba(8, 23, 39, 0.98)
+        ) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18) !important;
+}
+
+.st-key-roads_primary_controls [data-testid="stColumn"] {
+    min-height: 106px !important;
+    padding: 0.78rem 0.72rem 0.68rem !important;
+    border-radius: 13px !important;
+    border: 1px solid rgba(124, 170, 207, 0.22) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 48, 73, 0.95),
+            rgba(14, 34, 55, 0.97)
+        ) !important;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
+}
+
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(1) {
+    border-color: rgba(48, 173, 255, 0.48) !important;
+}
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(2) {
+    border-color: rgba(139, 92, 246, 0.36) !important;
+}
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(3) {
+    border-color: rgba(245, 158, 11, 0.38) !important;
+}
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(4) {
+    border-color: rgba(16, 185, 129, 0.40) !important;
+}
+
+.st-key-roads_primary_controls [data-testid="stColumn"] label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    min-height: 26px !important;
+    color: #d9e9f7 !important;
+    font-size: 0.77rem !important;
+    font-weight: 900 !important;
+}
+
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(1) label::before {
+    content: "⚙";
+    color: #35b6ff;
+    font-size: 1rem;
+}
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(2) label::before {
+    content: "◉";
+    color: #9b78ff;
+    font-size: 1rem;
+}
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(3) label::before {
+    content: "▦";
+    color: #f7ad23;
+    font-size: 1rem;
+}
+.st-key-roads_primary_controls [data-testid="stColumn"]:nth-child(4) label::before {
+    content: "◇";
+    color: #24d29c;
+    font-size: 1rem;
+}
+
+.st-key-roads_primary_controls div[data-baseweb="select"] > div {
+    min-height: 48px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(140, 183, 218, 0.20) !important;
+    background: rgba(19, 40, 63, 0.96) !important;
+}
+
+/* =========================================================
+   ROAD INFORMATION BANNERS
+   ========================================================= */
+
+.st-key-roads_page .architecture-banner,
+.st-key-roads_page .info-banner {
+    padding: 0.80rem 0.92rem !important;
+    border-radius: 11px !important;
+    border: 1px solid rgba(84, 169, 226, 0.18) !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(19, 52, 83, 0.92),
+            rgba(12, 35, 58, 0.90)
+        ) !important;
+
+    color: #d7e7f5 !important;
+}
+
+/* =========================================================
+   ROAD OPTION CARDS
+   ========================================================= */
+
+.st-key-roads_optimization_controls {
+    border: 0 !important;
+    background: transparent !important;
+    padding: 0.18rem 0 !important;
+    box-shadow: none !important;
+}
+
+.st-key-roads_optimization_controls [data-testid="stColumn"] {
+    min-height: 72px !important;
+    display: flex !important;
+    align-items: center !important;
+
+    border-radius:
+        12px !important;
+
+    padding:
+        0.72rem
+        0.82rem !important;
+
+    border:
+        1px solid
+        rgba(119, 155, 190, 0.18) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21, 43, 67, 0.97),
+            rgba(12, 29, 48, 0.98)
+        ) !important;
+}
+
+.st-key-roads_optimization_controls [data-testid="stColumn"]:nth-child(1) {
+    border-color: rgba(52, 176, 255, 0.32) !important;
+}
+.st-key-roads_optimization_controls [data-testid="stColumn"]:nth-child(2) {
+    border-color: rgba(124, 92, 255, 0.42) !important;
+}
+.st-key-roads_optimization_controls [data-testid="stColumn"]:nth-child(3) {
+    border-color: rgba(16, 185, 129, 0.42) !important;
+}
+
+.st-key-roads_optimization_controls [data-testid="stCheckbox"] label {
+    font-size: 0.83rem !important;
+    font-weight: 900 !important;
+}
+
+/* =========================================================
+   ROAD TRAINING SCHEDULE
+   ========================================================= */
+
+.st-key-roads_training_schedule {
+    padding: 0.78rem !important;
+    margin-bottom: 0.65rem !important;
+
+    border:
+        1px solid
+        rgba(90, 184, 245, 0.14) !important;
+
+    border-radius:
+        14px !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 35, 57, 0.97),
+            rgba(9, 25, 42, 0.98)
+        ) !important;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.14) !important;
+}
+
+/* =========================================================
+   ROAD ACTION BUTTON
+   ========================================================= */
+
+.st-key-roads_action_train .stButton > button,
+.st-key-roads_action_optuna .stButton > button,
+.st-key-roads_action_master .stButton > button {
+    min-height: 54px !important;
+    border-radius: 11px !important;
+    font-size: 0.94rem !important;
+    font-weight: 950 !important;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.27),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.st-key-roads_action_train .stButton > button {
+    background:
+        linear-gradient(
+            90deg,
+            #0588ff,
+            #16a9f4
+        ) !important;
+}
+
+.st-key-roads_action_optuna .stButton > button {
+    background:
+        linear-gradient(
+            90deg,
+            #6252f4,
+            #7c66ff
+        ) !important;
+}
+
+.st-key-roads_action_master .stButton > button {
+    background:
+        linear-gradient(
+            90deg,
+            #05a86e,
+            #13c78e
+        ) !important;
+}
+
+@media (max-width: 900px) {
+    .st-key-roads_page {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+    .st-key-roads_page .hero {
+        min-height: 150px !important;
+    }
+}
+/* =========================================================
+   BACKGROUND CLARITY TUNING
+   ========================================================= */
+
+/* Keep cards opaque while letting the HD aerial image remain visible outside them. */
+.st-key-roads_page .hero,
+.st-key-roads_primary_controls,
+.st-key-roads_split_controls,
+.st-key-roads_training_schedule,
+.st-key-roads_optimization_controls [data-testid="stColumn"] {
+    backdrop-filter: none !important;
+}

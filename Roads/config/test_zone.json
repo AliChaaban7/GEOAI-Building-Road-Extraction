@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+
+  "approach": "roads",
+  "task": "binary_semantic_segmentation",
+
+  "description": "Defines the held-out final evaluation protocol for Road Extraction. Final aerial, satellite, and drone test data must remain completely outside training, validation, threshold selection, post-processing selection, Optuna, and cross-validation.",
+
+  "policy": {
+    "strict_holdout": true,
+
+    "exclude_final_test_from_training": true,
+    "exclude_final_test_from_validation": true,
+    "exclude_final_test_from_cross_validation": true,
+
+    "allow_threshold_search_on_final_test": false,
+    "allow_postprocessing_search_on_final_test": false,
+    "allow_optuna_on_final_test": false,
+    "allow_master_optuna_on_final_test": false,
+
+    "use_frozen_checkpoint": true,
+    "use_frozen_probability_threshold": true,
+    "use_frozen_postprocessing": true,
+
+    "evaluate_each_source_independently": true,
+
+    "calculate_cross_source_summary": true,
+
+    "primary_selection_dataset": "validation"
+  },
+
+  "final_tests": {
+    "aerial": {
+      "enabled": true,
+
+      "configured": false,
+
+      "source_type": "aerial",
+
+      "path_reference": "final_test.aerial",
+
+      "native_pixel_size_m": 0.3,
+
+      "training_allowed": false,
+      "validation_allowed": false,
+      "hyperparameter_search_allowed": false,
+
+      "evaluation_allowed": true,
+
+      "metrics": [
+        "iou",
+        "precision",
+        "recall",
+        "f1",
+        "cldice"
+      ],
+
+      "status": "pending_test_paths"
+    },
+
+    "satellite": {
+      "enabled": true,
+
+      "configured": true,
+
+      "source_type": "satellite",
+
+      "path_reference": "final_test.satellite",
+
+      "native_pixel_size_m": 0.3,
+
+      "test_raster_name": "SatelliteTesingZone",
+
+      "ground_truth_name": "Road_Test_Label",
+
+      "training_allowed": false,
+      "validation_allowed": false,
+      "hyperparameter_search_allowed": false,
+
+      "evaluation_allowed": true,
+
+      "metrics": [
+        "iou",
+        "precision",
+        "recall",
+        "f1",
+        "cldice"
+      ],
+
+      "status": "ready"
+    },
+
+    "drone": {
+      "enabled": true,
+
+      "configured": false,
+
+      "source_type": "drone",
+
+      "path_reference": "final_test.drone",
+
+      "native_pixel_size_m": 0.1,
+
+      "training_allowed": false,
+      "validation_allowed": false,
+      "hyperparameter_search_allowed": false,
+
+      "evaluation_allowed": true,
+
+      "metrics": [
+        "iou",
+        "precision",
+        "recall",
+        "f1",
+        "cldice"
+      ],
+
+      "status": "pending_test_paths"
+    }
+  },
+
+  "frozen_settings": {
+    "checkpoint": null,
+
+    "probability_threshold": null,
+
+    "postprocessing": {
+      "minimum_component_pixels": null,
+      "closing_radius_pixels": null,
+      "maximum_hole_pixels": null,
+      "bridge_gap_pixels": null
+    },
+
+    "source_specific_retuning_allowed": false
+  },
+
+  "final_reporting": {
+    "report_individual_sources": true,
+
+    "source_order": [
+      "aerial",
+      "satellite",
+      "drone"
+    ],
+
+    "report_metrics": [
+      "iou",
+      "precision",
+      "recall",
+      "f1",
+      "cldice"
+    ],
+
+    "calculate_mean_source_iou": true,
+
+    "calculate_mean_source_precision": true,
+    "calculate_mean_source_recall": true,
+    "calculate_mean_source_f1": true,
+
+    "preserve_individual_source_results": true
+  }
+}

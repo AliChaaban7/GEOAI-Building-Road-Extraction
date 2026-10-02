@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+
+  "project": {
+    "name": "Approach 2 - Road Extraction",
+    "approach": "roads",
+    "task": "binary_semantic_segmentation",
+
+    "foreground_class": "road",
+    "background_class": "background",
+
+    "source_type": "mixed",
+    "sources": [
+      "aerial",
+      "satellite",
+      "drone"
+    ]
+  },
+
+  "reproducibility": {
+    "seed": 42,
+    "deterministic_split": true,
+    "deterministic_training": false
+  },
+
+  "data_split": {
+    "train_percent": 80,
+    "validation_percent": 20,
+    "seed": 42,
+
+    "external_test_included": false,
+
+    "description": "Training and validation are created only from the mixed-source training dataset. Final aerial, satellite, and drone test areas remain outside model development."
+  },
+
+  "data_loading": {
+    "num_workers": 0,
+    "pin_memory": true,
+    "persistent_workers": false,
+
+    "shuffle_training": true,
+    "shuffle_validation": false,
+
+    "image_channels": 3,
+    "mask_channels": 1,
+
+    "image_scale_min": 0.0,
+    "image_scale_max": 1.0
+  },
+
+  "training": {
+    "epochs": 40,
+    "batch_size": 8,
+
+    "optimizer": "adamw",
+
+    "learning_rate": 0.0001,
+    "weight_decay": 0.00001,
+
+    "scheduler": "cosine",
+
+    "use_amp": true,
+
+    "gradient_clipping": {
+      "enabled": false,
+      "max_norm": 1.0
+    },
+
+    "early_stopping": {
+      "enabled": false,
+      "patience": 8,
+      "minimum_delta": 0.0001
+    },
+
+    "checkpointing": {
+      "save_best_only": true,
+      "selection_metric": "validation_iou",
+      "mode": "max",
+      "checkpoint_name": "best_model.pth"
+    }
+  },
+
+  "loss": {
+    "name": "bce_dice",
+
+    "bce_weight": 0.5,
+    "dice_weight": 0.5,
+
+    "smooth": 1.0,
+
+    "road_specific_losses": {
+      "enable_cldice": false,
+      "cldice_weight": 0.0,
+
+      "enable_focal": false,
+      "focal_weight": 0.0,
+
+      "enable_tversky": false,
+      "tversky_weight": 0.0
+    }
+  },
+
+  "validation": {
+    "default_probability_threshold": 0.5,
+
+    "calculate_iou": true,
+    "calculate_precision": true,
+    "calculate_recall": true,
+    "calculate_f1": true,
+
+    "calculate_cldice": true,
+
+    "external_test_used": false
+  },
+
+  "threshold_search": {
+    "enabled_by_default": true,
+
+    "selection_dataset": "validation_only",
+
+    "thresholds": [
+      0.30,
+      0.35,
+      0.40,
+      0.45,
+      0.50,
+      0.55,
+      0.60,
+      0.65,
+      0.70
+    ],
+
+    "selection_metric": "iou",
+
+    "external_test_used": false
+  },
+
+  "postprocessing": {
+    "enabled_by_default": true,
+
+    "selection_dataset": "validation_only",
+
+    "remove_small_components": {
+      "enabled": true,
+
+      "candidate_min_component_pixels": [
+        0,
+        10,
+        25,
+        50,
+        75,
+        100,
+        150,
+        200
+      ]
+    },
+
+    "morphological_closing": {
+      "enabled": true,
+
+      "candidate_radius_pixels": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+
+    "fill_small_holes": {
+      "enabled": true,
+
+      "candidate_max_hole_pixels": [
+        0,
+        10,
+        25,
+        50,
+        100,
+        150
+      ]
+    },
+
+    "bridge_small_gaps": {
+      "enabled": true,
+
+      "candidate_gap_pixels": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+
+    "selection_metric": "iou",
+
+    "external_test_used": false
+  },
+
+  "inference": {
+    "batch_size": 1,
+
+    "default_probability_threshold": 0.5,
+
+    "overlap_ratio": 0.25,
+
+    "apply_postprocessing": true,
+
+    "output_binary_mask": true,
+    "output_probability_map": true
+  },
+
+  "evaluation": {
+    "primary_metrics": [
+      "iou",
+      "precision",
+      "recall",
+      "f1"
+    ],
+
+    "road_specific_metrics": [
+      "cldice"
+    ],
+
+    "primary_selection_metric": "iou",
+
+    "final_test_sources": [
+      "aerial",
+      "satellite",
+      "drone"
+    ],
+
+    "calculate_mean_source_iou": true,
+
+    "final_test_threshold_search": false,
+    "final_test_postprocessing_search": false
+  },
+
+  "cross_validation": {
+    "enabled_by_default": false,
+
+    "strategy": "spatial",
+    "n_folds": 3,
+
+    "shuffle": false,
+    "seed": 42,
+
+    "report_fold_metrics": true,
+    "report_mean": true,
+    "report_standard_deviation": true,
+
+    "external_test_used": false
+  },
+
+  "optuna": {
+    "objective_metric": "validation_iou",
+
+    "direction": "maximize",
+
+    "use_pruning": true,
+
+    "external_test_used": false
+  },
+
+  "reporting": {
+    "save_training_log": true,
+    "save_training_summary": true,
+
+    "save_validation_metrics": true,
+
+    "save_threshold_search": true,
+    "save_postprocessing_search": true,
+
+    "save_final_test_metrics": true,
+
+    "save_source_specific_results": true
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+
+  "model": {
+    "id": "sam_lora",
+
+    "name": "SAM-LoRA",
+
+    "approach": "roads",
+
+    "task": "binary_semantic_segmentation",
+
+    "family": "foundation_model_peft",
+
+    "description": "Segment Anything Model adapted to mixed-source road extraction using Low-Rank Adaptation while preserving the pretrained SAM foundation model."
+  },
+
+  "architecture": {
+    "implementation": "custom_pytorch_sam_lora",
+
+    "sam_variant": "vit_b",
+
+    "checkpoint_reference": "pretrained_models.sam_vit_b",
+
+    "input_channels": 3,
+
+    "output_channels": 1,
+
+    "binary_segmentation": true,
+
+    "return_logits": true,
+
+    "final_activation": "none"
+  },
+
+  "sam": {
+    "encoder": "vit_b",
+
+    "use_pretrained_weights": true,
+
+    "freeze_base_sam_weights": true,
+
+    "prompt_mode": "automatic_segmentation",
+
+    "use_external_prompts": false
+  },
+
+  "lora": {
+    "enabled": true,
+
+    "rank": 8,
+
+    "alpha": 16,
+
+    "dropout": 0.0,
+
+    "target_attention_components": [
+      "query",
+      "value"
+    ],
+
+    "train_lora_parameters": true
+  },
+
+  "data": {
+    "metadata_format": "classified_tiles",
+
+    "source_type": "mixed",
+
+    "sources": [
+      "aerial",
+      "satellite",
+      "drone"
+    ],
+
+    "chip_size_source": "experiment.tile_size"
+  },
+
+  "training": {
+    "inherit_general_params": false,
+
+    "epochs": 40,
+
+    "batch_size": 1,
+
+    "optimizer": "adamw",
+
+    "learning_rate": 0.0001,
+
+    "weight_decay": 0.00001,
+
+    "scheduler": "cosine",
+
+    "use_amp": true,
+
+    "gradient_clipping": {
+      "enabled": false,
+      "max_norm": 1.0
+    }
+  },
+
+  "loss": {
+    "name": "bce_dice",
+
+    "bce_weight": 0.5,
+
+    "dice_weight": 0.5,
+
+    "smooth": 1.0
+  },
+
+  "validation": {
+    "default_probability_threshold": 0.5,
+
+    "checkpoint_selection_metric": "validation_iou",
+
+    "checkpoint_selection_mode": "max",
+
+    "calculate_iou": true,
+
+    "calculate_precision": true,
+
+    "calculate_recall": true,
+
+    "calculate_f1": true,
+
+    "calculate_cldice": true
+  },
+
+  "augmentation": {
+    "supported": true,
+
+    "enabled_for_baseline": false,
+
+    "config_reference": "../optional/augmentation.json"
+  },
+
+  "optuna": {
+    "supported": true,
+
+    "config_reference": "../optional/optuna.json",
+
+    "baseline_search": false
+  },
+
+  "master_optuna": {
+    "supported": true,
+
+    "search_space_reference": "../optional/master_optuna_search_space.json",
+
+    "recommended_max_trials": 5,
+
+    "recommended_trial_epochs": 12,
+
+    "use_pruning": true,
+
+    "retrain_full_winner": true
+  },
+
+  "cross_validation": {
+    "supported": true,
+
+    "config_reference": "../optional/cross_validation.json",
+
+    "inside_optuna_trials": false
+  },
+
+  "threshold_search": {
+    "supported": true,
+
+    "selection_dataset": "validation_only"
+  },
+
+  "postprocessing": {
+    "supported": true,
+
+    "selection_dataset": "validation_only",
+
+    "config_reference": "../optional/postprocessing.json"
+  },
+
+  "final_testing": {
+    "supported": true,
+
+    "use_frozen_checkpoint": true,
+
+    "use_frozen_threshold": true,
+
+    "use_frozen_postprocessing": true,
+
+    "source_specific_retuning": false,
+
+    "sources": [
+      "aerial",
+      "satellite",
+      "drone"
+    ]
+  },
+
+  "outputs": {
+    "save_best_checkpoint": true,
+
+    "save_last_checkpoint": false,
+
+    "save_lora_weights": true,
+
+    "save_training_history": true,
+
+    "save_validation_predictions": true,
+
+    "save_probability_maps": true,
+
+    "save_binary_masks": true,
+
+    "save_final_test_predictions": true
+  }
+}

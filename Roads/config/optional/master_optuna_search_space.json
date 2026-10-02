@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+
+  "approach": "roads",
+
+  "enabled": false,
+
+  "study": {
+    "study_name_template": "{model_type}_{tile_size}_{source_type}_roads_optuna",
+
+    "direction": "maximize",
+
+    "objective_metric": "validation_iou",
+
+    "sampler": "tpe",
+
+    "seed": 42
+  },
+
+  "trials": {
+    "n_trials": 10,
+
+    "trial_epochs": 12,
+
+    "final_training_epochs": 40,
+
+    "train_final_model": true
+  },
+
+  "pruning": {
+    "enabled": true,
+
+    "pruner": "median",
+
+    "startup_trials": 3,
+
+    "warmup_epochs": 4,
+
+    "interval_epochs": 1
+  },
+
+  "search_space": {
+    "learning_rate": {
+      "type": "float",
+
+      "low": 0.00001,
+
+      "high": 0.001,
+
+      "log": true
+    },
+
+    "weight_decay": {
+      "type": "float",
+
+      "low": 0.000001,
+
+      "high": 0.001,
+
+      "log": true
+    },
+
+    "bce_weight": {
+      "type": "float",
+
+      "low": 0.30,
+
+      "high": 0.70,
+
+      "step": 0.05
+    },
+
+    "augmentation": {
+      "type": "categorical",
+
+      "choices": [
+        false,
+        true
+      ]
+    }
+  },
+
+  "derived_parameters": {
+    "dice_weight": {
+      "formula": "1.0 - bce_weight"
+    }
+  },
+
+  "fixed_parameters": {
+    "optimizer": "adamw",
+
+    "scheduler": "cosine",
+
+    "use_amp": true,
+
+    "validation_probability_threshold": 0.5
+  },
+
+  "excluded_from_search": [
+    "tile_size",
+    "batch_size",
+    "probability_threshold",
+    "postprocessing",
+    "final_test_parameters",
+    "cross_validation"
+  ],
+
+  "validation_policy": {
+    "objective_dataset": "validation_only",
+
+    "use_final_test": false,
+
+    "threshold_search_inside_trials": false,
+
+    "postprocessing_search_inside_trials": false,
+
+    "cross_validation_inside_trials": false
+  },
+
+  "winner_policy": {
+    "selection_metric": "validation_iou",
+
+    "retrain_winner": true,
+
+    "retrain_epochs": 40,
+
+    "use_winning_learning_rate": true,
+
+    "use_winning_weight_decay": true,
+
+    "use_winning_bce_weight": true,
+
+    "use_winning_augmentation": true
+  },
+
+  "outputs": {
+    "save_study": true,
+
+    "save_trials_csv": true,
+
+    "save_best_trial_json": true,
+
+    "save_optimization_history": true,
+
+    "save_parameter_importance": true,
+
+    "save_final_winner_config": true
+  }
+}

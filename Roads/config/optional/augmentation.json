@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+
+  "approach": "roads",
+
+  "enabled": false,
+
+  "apply_to": {
+    "training": true,
+    "validation": false,
+    "final_test": false
+  },
+
+  "preserve_image_mask_alignment": true,
+
+  "geometric": {
+    "horizontal_flip": {
+      "enabled": true,
+      "probability": 0.5
+    },
+
+    "vertical_flip": {
+      "enabled": true,
+      "probability": 0.5
+    },
+
+    "rotation_90": {
+      "enabled": true,
+      "probability": 0.5
+    },
+
+    "random_rotation": {
+      "enabled": false,
+      "probability": 0.0,
+      "degrees": 15
+    },
+
+    "random_scale": {
+      "enabled": false,
+      "probability": 0.0,
+      "scale_limit": 0.1
+    },
+
+    "elastic_transform": {
+      "enabled": false,
+      "probability": 0.0
+    }
+  },
+
+  "photometric": {
+    "brightness": {
+      "enabled": true,
+      "probability": 0.3,
+      "limit": 0.15
+    },
+
+    "contrast": {
+      "enabled": true,
+      "probability": 0.3,
+      "limit": 0.15
+    },
+
+    "brightness_contrast": {
+      "enabled": false,
+      "probability": 0.0
+    },
+
+    "gamma": {
+      "enabled": false,
+      "probability": 0.0,
+      "gamma_limit": [
+        90,
+        110
+      ]
+    },
+
+    "gaussian_noise": {
+      "enabled": false,
+      "probability": 0.15
+    },
+
+    "gaussian_blur": {
+      "enabled": false,
+      "probability": 0.0
+    },
+
+    "color_jitter": {
+      "enabled": false,
+      "probability": 0.0
+    }
+  },
+
+  "road_specific_policy": {
+    "preserve_connectivity": true,
+    "preserve_mask_topology": true,
+    "avoid_aggressive_geometric_distortion": true,
+    "avoid_crop_that_removes_major_road_context": true
+  },
+
+  "random_seed": 42
+}

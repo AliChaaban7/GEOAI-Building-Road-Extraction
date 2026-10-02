@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "approach": "roads",
+  "task": "binary_semantic_segmentation",
+  "dataset_type": "classified_tiles",
+  "source_type": "mixed",
+
+  "description": "Mixed-source road segmentation datasets exported from ArcGIS Pro using Classified Tiles. Each dataset contains aerial, satellite, and drone training imagery with manually labeled road-surface masks.",
+
+  "export_root": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads",
+
+  "sources": [
+    "aerial",
+    "satellite",
+    "drone"
+  ],
+
+  "datasets": {
+    "roads_ct_128_mixed": {
+      "dataset_id": "roads_ct_128_mixed",
+      "name": "CT_128_Roads_03",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_128_Roads",
+      "images_folder": "images",
+      "labels_folder": "labels",
+
+      "approach": "roads",
+      "task": "binary_semantic_segmentation",
+
+      "dataset_type": "ct",
+      "metadata_format": "classified_tiles",
+
+      "source_type": "mixed",
+      "sources": [
+        "aerial",
+        "satellite",
+        "drone"
+      ],
+
+      "tile_size": 128,
+      "role": "train_validation",
+
+      "foreground_class": "road",
+      "background_class": "background",
+
+      "contains_background": true,
+      "enabled": true
+    },
+
+    "roads_ct_192_mixed": {
+      "dataset_id": "roads_ct_192_mixed",
+      "name": "CT_192_Roads_03",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_192_Roads",
+      "images_folder": "images",
+      "labels_folder": "labels",
+
+      "approach": "roads",
+      "task": "binary_semantic_segmentation",
+
+      "dataset_type": "ct",
+      "metadata_format": "classified_tiles",
+
+      "source_type": "mixed",
+      "sources": [
+        "aerial",
+        "satellite",
+        "drone"
+      ],
+
+      "tile_size": 192,
+      "role": "train_validation",
+
+      "foreground_class": "road",
+      "background_class": "background",
+
+      "contains_background": true,
+      "enabled": true
+    },
+
+    "roads_ct_256_mixed": {
+      "dataset_id": "roads_ct_256_mixed",
+      "name": "CT_256_Roads_03",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_256_Roads",
+      "images_folder": "images",
+      "labels_folder": "labels",
+
+      "approach": "roads",
+      "task": "binary_semantic_segmentation",
+
+      "dataset_type": "ct",
+      "metadata_format": "classified_tiles",
+
+      "source_type": "mixed",
+      "sources": [
+        "aerial",
+        "satellite",
+        "drone"
+      ],
+
+      "tile_size": 256,
+      "role": "train_validation",
+
+      "foreground_class": "road",
+      "background_class": "background",
+
+      "contains_background": true,
+      "enabled": true
+    },
+
+    "roads_ct_384_mixed": {
+      "dataset_id": "roads_ct_384_mixed",
+      "name": "CT_384_Roads_03",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_384_Roads",
+      "images_folder": "images",
+      "labels_folder": "labels",
+
+      "approach": "roads",
+      "task": "binary_semantic_segmentation",
+
+      "dataset_type": "ct",
+      "metadata_format": "classified_tiles",
+
+      "source_type": "mixed",
+      "sources": [
+        "aerial",
+        "satellite",
+        "drone"
+      ],
+
+      "tile_size": 384,
+      "role": "train_validation",
+
+      "foreground_class": "road",
+      "background_class": "background",
+
+      "contains_background": true,
+      "enabled": true
+    },
+
+    "roads_ct_512_mixed": {
+      "dataset_id": "roads_ct_512_mixed",
+      "name": "CT_512_Roads_03",
+      "path": "D:/Ali Chaaban Thesis Project/Data/Exported_Data_Roads/CT_512_Roads",
+      "images_folder": "images",
+      "labels_folder": "labels",
+
+      "approach": "roads",
+      "task": "binary_semantic_segmentation",
+
+      "dataset_type": "ct",
+      "metadata_format": "classified_tiles",
+
+      "source_type": "mixed",
+      "sources": [
+        "aerial",
+        "satellite",
+        "drone"
+      ],
+
+      "tile_size": 512,
+      "role": "train_validation",
+
+      "foreground_class": "road",
+      "background_class": "background",
+
+      "contains_background": true,
+      "enabled": true
+    }
+  }
+}
