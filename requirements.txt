@@ -1,0 +1,52 @@
+# ============================================================
+# Deep Learning-Based Extraction of Buildings and Roads
+# Master Thesis — GeoAI
+# ============================================================
+#
+# Core pip-installable dependencies used by the Buildings/Roads
+# pipelines and the unified Streamlit application.
+#
+# IMPORTANT:
+# - ArcPy is supplied by ArcGIS Pro and must NOT be installed via pip.
+# - ArcGIS Learn / Esri deep-learning dependencies should be managed
+#   through the ArcGIS Pro / Esri environment.
+# - PyTorch/CUDA compatibility is machine-specific. For GPU training,
+#   install a torch/torchvision build compatible with the local CUDA
+#   and ArcGIS Pro environment.
+# ============================================================
+
+# Core numerical/data stack
+numpy
+pandas
+
+# Deep learning
+torch
+torchvision
+
+# Hyperparameter optimization
+optuna
+
+# Unified application / visualization
+streamlit
+pydeck
+
+# Image handling / raster preview utilities
+Pillow
+
+# ============================================================
+# ArcGIS-specific dependencies (external to pip requirements)
+# ============================================================
+# arcpy
+# arcgis
+# arcgis.learn
+#
+# These are provided/managed by ArcGIS Pro and the Esri
+# deep-learning environment.
+# ============================================================
+
+# ============================================================
+# External model assets
+# ============================================================
+# Official SAM checkpoints are downloaded separately and are not
+# Python packages. They are intentionally excluded from Git.
+# ============================================================
